@@ -1,0 +1,38 @@
+##############################################################
+# FYI: 
+# YJ run the exp10 and exp11 to explore YOLOv5 codes for his own project
+# You can use the results if it's nice, since YJ just playing around with YOLOv5 using your dataset
+##############################################################
+
+
+Previous experiments should be failed/stopped/bad performance
+	- some failed are due to no dataset (and etc)
+	- YOLOv5 code create exp{N} everytime you run "python3 train.py", even if got error code
+	- can delete exp to exp 8 (if nothing important inside)
+	
+exp9:
+	- KH's YOLOv5x batch size 8, epoch 300, without pretrained weights
+	- mAP = 0.473
+	- total training time = 10.178 hours
+	- remarks: not sure if the performance can be improved using pretrained weights + augmentation
+	
+exp10:
+	- YJ's YOLOv5n batch size 64, epoch 100, with pretrained weights, hyperparameter using hyp.yijie.yaml
+	- mAP = 0.487
+	- total training time = 0.817 hours
+	- remarks: exp10 is better than exp9 in terms of mAP, total training time, and FPS (not calculated, but YOLOv5n confirmed faster)
+
+
+exp11:
+	- YJ's YOLOv5n batch size 64, epoch 300, with pretrained weights, hyperparameter using hyp.yijie.yaml
+	- mAP = 0.496
+	- total training time = 2.394 hours
+
+
+
+
+Sample training:
+python3 train.py --data UFDD.yaml --epochs 300 --weights yolov5n.pt --batch-size 64 --hyp data/hyps/hyp.yijie.yaml	
+
+Sample validation (no need explicitly run, because all validation results are shown in runs/train/exp{N}/ already):
+python val.py --weights runs/train/exp10/weights/best.pt --data UFDD.yaml --img 640

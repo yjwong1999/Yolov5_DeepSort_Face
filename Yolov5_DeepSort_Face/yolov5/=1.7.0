@@ -1,0 +1,8 @@
+Requirement already satisfied: torch in /home/tham/.local/lib/python3.8/site-packages (1.13.1)
+Requirement already satisfied: typing-extensions in /home/tham/.local/lib/python3.8/site-packages (from torch) (4.5.0)
+Requirement already satisfied: nvidia-cuda-runtime-cu11==11.7.99; platform_system == "Linux" in /home/tham/.local/lib/python3.8/site-packages (from torch) (11.7.99)
+Requirement already satisfied: nvidia-cudnn-cu11==8.5.0.96; platform_system == "Linux" in /home/tham/.local/lib/python3.8/site-packages (from torch) (8.5.0.96)
+Requirement already satisfied: nvidia-cublas-cu11==11.10.3.66; platform_system == "Linux" in /home/tham/.local/lib/python3.8/site-packages (from torch) (11.10.3.66)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu11==11.7.99; platform_system == "Linux" in /home/tham/.local/lib/python3.8/site-packages (from torch) (11.7.99)
+Requirement already satisfied: setuptools in /home/tham/.local/lib/python3.8/site-packages (from nvidia-cuda-runtime-cu11==11.7.99; platform_system == "Linux"->torch) (67.3.2)
+Requirement already satisfied: wheel in /home/tham/.local/lib/python3.8/site-packages (from nvidia-cuda-runtime-cu11==11.7.99; platform_system == "Linux"->torch) (0.38.4)
