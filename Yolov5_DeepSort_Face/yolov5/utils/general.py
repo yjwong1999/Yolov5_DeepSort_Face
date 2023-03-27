@@ -1125,7 +1125,10 @@ def imwrite(path, im):
 
 
 def imshow(path, im):
-    imshow_(path.encode('unicode_escape').decode(), im) #as_posix #decode
+    if type(path) is not str:
+        imshow_(path.as_posix(), im) #as_posix #decode
+    else:
+        imshow_(path, im) #as_posix #decode
 
 
 cv2.imread, cv2.imwrite, cv2.imshow = imread, imwrite, imshow  # redefine
