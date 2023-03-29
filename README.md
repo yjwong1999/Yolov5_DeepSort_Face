@@ -47,6 +47,6 @@ python3 track.py --source dataset_cam1.mp4 --yolo_model best.pt --img 640 --save
 2. [Yolov8 + DeepSort for Object Detection and Tracking](https://github.com/mikel-brostrom/yolov8_tracking) </br>
 3. [OpenSphere Face Recognition](https://github.com/ydwen/opensphere) </br>
 
-Technically, I used Reference [1] for detection & tracking, where Reference [2] is forked from a past version of Reference [2] </br>
-Reference [1] and [2] assign ID based on tracks (which means each tracking has an ID, disregarding the object identity itself) </br>
-Thus, [3] is used to learn the face identity, which is assigned as the ID for the tracking ID
+- Technically, I used Reference [1] for detection & tracking, where Reference [2] is forked from a past version of Reference [2] </br>
+- Reference [1] and [2] assign ID based on tracks (which means each tracking has an ID, disregarding the object identity itself) </br>
+- Thus, [3] is used to learn the face identity, which is assigned as the ID for the tracking ID
