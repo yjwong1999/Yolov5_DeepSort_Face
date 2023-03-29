@@ -38,7 +38,7 @@ cd ../
 - Do Tracking with mentioned command below
 ```
 # video file
-python3 track.py --source dataset_cam1.mp4 --yolo_model best.pt --img 640 --save-vid --show-vid
+python3 track.py --source dataset_cam2.mp4 --yolo_model yolo_face.pt --img 640 --deep_sort_model opensphere/project/sfnet20_face --show-vid --save-vid 
 ```
 
 ## Acknowledgement
