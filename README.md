@@ -43,7 +43,7 @@ python3 track.py --source dataset_cam1.mp4 --yolo_model best.pt --img 640 --save
 
 ## Acknowledgement
 
-1. [Yolov5 + DeepSort for Object Detection and Tracking](https://github.com/ynlx/Yolov5_DeepSort) </br>
+1. [Yolov5 + DeepSort for Object Detection and Tracking](https://github.com/nicedaddy/Yolov5_DeepSort_Pytorch) </br>
 2. [Yolov8 + DeepSort for Object Detection and Tracking](https://github.com/mikel-brostrom/yolov8_tracking) </br>
 3. [OpenSphere Face Recognition](https://github.com/ydwen/opensphere) </br>
 
