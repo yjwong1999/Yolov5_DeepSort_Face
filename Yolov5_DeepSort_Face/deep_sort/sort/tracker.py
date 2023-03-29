@@ -6,6 +6,22 @@ from . import linear_assignment
 from . import iou_matching
 from .track import Track
 
+from scipy.spatial.distance import cdist
+
+
+def cosine_distance(a, b):
+    return 1 - np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+'''
+# cos distance based on opensphere repo (not sure got bug ma)
+import torch.nn.functional as F 
+import torch   
+def cosine_distance(feats):
+    feats = F.normalize(feats, dim=1)
+    feats0 = feats[0, :]
+    feats1 = feats[1, :]
+    dist = 1 - torch.sum(feats0 * feats1, dim=-1)
+    return dist.tolist()
+'''   
 
 class Tracker:
     """
@@ -45,6 +61,8 @@ class Tracker:
         self.kf = kalman_filter.KalmanFilter()
         self.tracks = []
         self._next_id = 1
+        
+        self.id_feats = {}
 
     def predict(self):
         """Propagate track state distributions one time step forward.
@@ -73,9 +91,43 @@ class Tracker:
             self._match(detections)
 
         # Update track set.
+        print(self.id_feats.keys())
         for track_idx, detection_idx in matches:
             self.tracks[track_idx].update(
                 self.kf, detections[detection_idx], classes[detection_idx])
+            #########################
+            id_ = self.tracks[track_idx].track_id
+            feat_ = detections[detection_idx].feature
+            if len(self.id_feats.keys()) == 0:
+                self.id_feats[id_] = feat_
+            elif id_ not in self.id_feats.keys():
+                all_feats = list(self.id_feats.values())
+                cos_dist = [cosine_distance(feat_, all_feats[i]) for i in range(len(all_feats))]
+                cos_dist = np.array(cos_dist)
+                print('zzzzzzzzzzzzzzzzzzzzzzzzzzz', cos_dist)
+                if np.min(cos_dist) > 0.3:
+                    self.id_feats[id_] = feat_
+                else:
+                    self.tracks[track_idx].track_id = list(self.id_feats.keys())[np.argmin(cos_dist)]
+            '''
+            # for opensphere repo cos dist
+            id_ = self.tracks[track_idx].track_id
+            feat_ = torch.tensor([detections[detection_idx].feature])
+            if len(self.id_feats.keys()) == 0:
+                self.id_feats[id_] = feat_
+            elif id_ not in self.id_feats.keys():
+                all_feats = torch.tensor(np.concatenate(list(self.id_feats.values()), axis=0))
+                n_feat_ = torch.tensor(np.concatenate([feat_] * len(all_feats)))
+                print(all_feats.shape, n_feat_.shape)
+                cos_dist = cosine_distance(torch.cat([all_feats, n_feat_], dim=0))
+                cos_dist = np.array(cos_dist)
+                print('zzzzzzzzzzzzzzzzzzzzzzzzzzz', cos_dist)
+                if np.min(cos_dist) > 0.3:
+                    self.id_feats[id_] = feat_
+                else:
+                    self.tracks[track_idx].track_id = list(self.id_feats.keys())[np.argmin(cos_dist)]
+            '''
+            #########################
         for track_idx in unmatched_tracks:
             self.tracks[track_idx].mark_missed()
         for detection_idx in unmatched_detections:
