@@ -1,0 +1,77 @@
+project:
+  proj_dir: project/
+  model_dir: models/
+  cfg_fname: config.yml
+  train_log:
+    path: train.log
+    screen_intvl: 200
+    headers: {Loss: ':3.4f', bkb_grad: ':3.2f', head_grad: ':3.2f',
+      Mag_mean: ':3.2f', Mag_std: ':3.2f'}
+  val_log:
+    path: val.log
+    screen_intvl: 1
+    headers: {LFW: ':3.3f', AgeDB-30: ':3.3f', CA-LFW: ':3.3f',
+      CP-LFW: ':3.3f'}
+  val_intvl: 2000
+  save_iters: [2000, 4000, 6000, 8000, 10000] # [2000, 4000, 6000, 8000, 10000, 12000, 14000, 16000, 18000, 20000]
+data:
+  base:
+    dataset:
+      type: PairDataset
+      data_dir: data/val/
+      test_mode: true
+    dataloader: {type: DataLoader, batch_size: 64,
+      shuffle: false, drop_last: false, num_workers: 4,
+      pin_memory: true}
+  train:
+    dataset:
+      type: ClassDataset
+      name: VGGFace2
+      data_dir: /home/tham/Desktop/KH/opensphere/customize/QMUL-SurvFace
+      ann_path: /home/tham/Desktop/KH/opensphere/customize/QMUL-SurvFace/SurvFace_train_ann.txt
+      test_mode: false
+    dataloader: {batch_size: 256, shuffle: true, drop_last: true}
+  val:
+  - dataset:
+      name: LFW
+      ann_path: data/val/lfw_ann.txt
+      metrics:
+      - ACC
+  - dataset:
+      name: AgeDB-30
+      ann_path: data/val/agedb_30_ann.txt
+      metrics:
+      - ACC
+  - dataset:
+      name: CA-LFW
+      ann_path: data/val/calfw_ann.txt
+      metrics:
+      - ACC
+  - dataset:
+      name: CP-LFW
+      ann_path: data/val/cplfw_ann.txt
+      metrics:
+      - ACC
+parallel:
+  backend: nccl
+  dist_url: tcp://127.0.0.1:21119
+  device_ids: [0]
+model:
+  base:
+    net: {}
+    optimizer: {type: SGD, lr: 0.1, momentum: 0.9, weight_decay: 0.0005}
+    scheduler:
+      type: MultiStepLR
+      milestones: [5000, 7800, 9400, 10000] # [10000, 15600, 18800, 20000]
+      gamma: 0.1
+  backbone:
+    net:
+      type: sfnet64_deprecated
+      in_channel: 3
+      channels: [64, 128, 256, 512]
+      out_channel: 512
+  head:
+    net:
+      type: SphereFace
+      s: 32
+      m: 1.7
