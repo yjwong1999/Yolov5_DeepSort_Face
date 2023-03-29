@@ -41,5 +41,10 @@ cd ../
 python3 track.py --source dataset_cam1.mp4 --yolo_model best.pt --img 640 --save-vid --show-vid
 ```
 
-# Acknowledgement
+## Acknowledgement
 
+1. [Yolov5 + DeepSort for Object Detection and Tracking](https://github.com/ynlx/Yolov5_DeepSort) </br>
+2. [Yolov8 + DeepSort for Object Detection and Tracking](https://github.com/mikel-brostrom/yolov8_tracking) </br>
+3. [OpenSphere Face Recognition](https://github.com/ydwen/opensphere) </br>
+
+- Technically, I used Reference [1] for detection & tracking, where Reference [2] is forked from a past version of Reference [2]
