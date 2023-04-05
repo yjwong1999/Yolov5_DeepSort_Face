@@ -28,6 +28,8 @@ cd yolov5
 - Install the yolov5 package
 ```
 pip install -r requirements.txt
+pip install tabulate
+pip install easydict
 ```
 
 - Back to pipeline directory.
