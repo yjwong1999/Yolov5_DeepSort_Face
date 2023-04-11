@@ -1,2 +1,5 @@
-0
-1
+# sample
+# please remove all comments 
+0                                             # camera connected to port 0
+1                                             # camera connected to port 1
+https://www.youtube.com/watch?v=L4NSb8jZ-9w   # an online video
