@@ -47,10 +47,10 @@ python3 find_port.py
 # In source.streams, each line should be one camera/streams
 #
 # 1. camera port number (which you get by running python3 find_port.py)
-# 2. https or rspt link (for online video)
+# 2. https or rtsp link (for online video)
 # 3. <video>.mp4 or relevant video format
 #
-# Note that you can mix between the source format (live/video/rstp/https)
+# Note that you can mix between the source format (live/video/rtsp/https)
 ```
 
 - Do Tracking with mentioned command below
