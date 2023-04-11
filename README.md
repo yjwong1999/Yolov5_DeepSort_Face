@@ -37,6 +37,11 @@ pip install easydict
 cd ../
 ```
 
+- Find the port numbers connected with camera(s)
+```
+python3 find_port.py
+```
+
 - Do Tracking with mentioned command below
 ```
 # single video cam
