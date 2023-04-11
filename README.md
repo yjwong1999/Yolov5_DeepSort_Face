@@ -39,8 +39,14 @@ cd ../
 
 - Do Tracking with mentioned command below
 ```
+# single video cam
+python3 track.py --source 0 --yolo_model yolo_face.pt --img 640 --deep_sort_model opensphere/project/sfnet20_face --show-vid --save-vid 
+
 # video file
-python3 track.py --source dataset_cam2.mp4 --yolo_model yolo_face.pt --img 640 --deep_sort_model opensphere/project/sfnet20_face --show-vid --save-vid 
+python3 track.py --source dataset_cam2.mp4 --yolo_model yolo_face.pt --img 640 --deep_sort_model opensphere/project/sfnet20_face --show-vid --save-vid
+
+# multi-streams (can mix between live/video/rstp/https)
+python3 track.py --source source.streams --yolo_model yolo_face.pt --img 640 --deep_sort_model opensphere/project/sfnet20_face --show-vid --save-vid
 ```
 
 ## Acknowledgement
