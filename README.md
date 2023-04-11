@@ -72,6 +72,8 @@ Many thanks to our funder Greatech Integration (M) Sdn Bhd for sponsoring this p
 1. [Yolov5 + DeepSort for Object Detection and Tracking](https://github.com/nicedaddy/Yolov5_DeepSort_Pytorch) </br>
 2. [Yolov8 + DeepSort for Object Detection and Tracking](https://github.com/mikel-brostrom/yolov8_tracking) </br>
 3. [OpenSphere Face Recognition](https://github.com/ydwen/opensphere) </br>
+4. [Yolov5](https://github.com/ultralytics/yolov5) </br>
+5. [How to list available cameras OpenCV/Python](https://stackoverflow.com/a/62639343)
 
 - Technically, I used Reference [1] for detection & tracking, where Reference [2] is forked from a past version of Reference [2] </br>
 - Reference [1] and [2] assign ID based on tracks (which means each tracking has an ID, disregarding the object identity itself) </br>
