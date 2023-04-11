@@ -45,10 +45,12 @@ python3 find_port.py
 - How to use ```source.streams``` for multli-cam or multi-streams
 ```
 # In source.streams, each line should be one camera/streams
-# 
-# 1. camera port number (which you get from ```python3 find_port.py```
+#
+# 1. camera port number (which you get by running python3 find_port.py)
 # 2. https or rspt link (for online video)
 # 3. <video>.mp4 or relevant video format
+#
+# Note that you can mix between the source format (live/video/rstp/https)
 ```
 
 - Do Tracking with mentioned command below
