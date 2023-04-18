@@ -33,6 +33,15 @@ pip install easydict
 pip install numpy==1.23.1
 ```
 
+- Download pretrained OpenSphere Model
+```
+sudo apt-get install zip unzip
+
+cd opensphere/project
+wget --no-check-certificate 'https://drive.google.com/file/d/1mEAkIa9B89QzsamVhNp9mol5PZWxLthM/view?usp=share_link' -O sfnet20_ref.zip
+unzip sfnet20_ref.zip
+```
+
 - Back to pipeline directory.
 ```
 cd ../
