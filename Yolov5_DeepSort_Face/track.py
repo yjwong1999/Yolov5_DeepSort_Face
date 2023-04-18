@@ -37,21 +37,17 @@ if str(ROOT) not in sys.path:
 ROOT = Path(os.path.relpath(ROOT, Path.cwd()))  # relative
 
 
+#######
+# new
+id_feats = {} # to store or face_id: feature
+######
+
 def detect(opt):
     out, source, yolo_model, deep_sort_model, show_vid, save_vid, save_txt, imgsz, evaluate, half, project, name, exist_ok= \
         opt.output, opt.source, opt.yolo_model, opt.deep_sort_model, opt.show_vid, opt.save_vid, \
         opt.save_txt, opt.imgsz, opt.evaluate, opt.half, opt.project, opt.name, opt.exist_ok
     webcam = source == '0' or source.startswith(
         'rtsp') or source.startswith('http') or source.endswith('.txt')
-
-    # initialize deepsort
-    cfg = get_config()
-    cfg.merge_from_file(opt.config_deepsort)
-    deepsort = DeepSort(deep_sort_model,
-                        max_dist=cfg.DEEPSORT.MAX_DIST, min_confidence=cfg.DEEPSORT.MIN_CONFIDENCE,
-                        max_iou_distance=cfg.DEEPSORT.MAX_IOU_DISTANCE,
-                        max_age=cfg.DEEPSORT.MAX_AGE, n_init=cfg.DEEPSORT.N_INIT, nn_budget=cfg.DEEPSORT.NN_BUDGET,
-                        use_cuda=True)
 
     # Initialize
     device = select_device(opt.device)
@@ -98,6 +94,19 @@ def detect(opt):
         bs = 1  # batch_size
     vid_path, vid_writer = [None] * bs, [None] * bs
 
+    # initialize deepsort
+    deepsort_list = []
+    for i in range(len(dataset)):
+        cfg = get_config()
+        cfg.merge_from_file(opt.config_deepsort)
+        deepsort = DeepSort(deep_sort_model,
+                            max_dist=cfg.DEEPSORT.MAX_DIST, min_confidence=cfg.DEEPSORT.MIN_CONFIDENCE,
+                            max_iou_distance=cfg.DEEPSORT.MAX_IOU_DISTANCE,
+                            max_age=cfg.DEEPSORT.MAX_AGE, n_init=cfg.DEEPSORT.N_INIT, nn_budget=cfg.DEEPSORT.NN_BUDGET,
+                            use_cuda=True,
+                            global_id_feats=id_feats) # new
+        deepsort_list.append(deepsort)
+                        
     # Get names and colors
     names = model.module.names if hasattr(model, 'module') else model.names
 
@@ -129,7 +138,6 @@ def detect(opt):
         dt[2] += time_sync() - t3
 
         # Process detections
-        one_of_the_det_is_none_or_zero = False
         for i, det in enumerate(pred):  # detections per image
             seen += 1
             if webcam:  # batch_size >= 1
@@ -160,7 +168,7 @@ def detect(opt):
 
                 # pass detections to deepsort
                 t4 = time_sync()
-                outputs = deepsort.update(xywhs.cpu(), confs.cpu(), clss.cpu(), im0)
+                outputs = deepsort_list[i].update(xywhs.cpu(), confs.cpu(), clss.cpu(), im0)
                 t5 = time_sync()
                 dt[3] += t5 - t4
 
@@ -189,7 +197,7 @@ def detect(opt):
 
             
             else:
-                one_of_the_det_is_none_or_zero = True
+                deepsort_list[i].increment_ages()
 
             # Stream results
             im0 = annotator.result()
@@ -213,10 +221,6 @@ def detect(opt):
 
                     vid_writer[i] = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
                 vid_writer[i].write(im0)
-
-        # increment of ages                
-        if one_of_the_det_is_none_or_zero:
-            deepsort.increment_ages()
 
         # Print time (inference-only)
         try:
