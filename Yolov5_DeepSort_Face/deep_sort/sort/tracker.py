@@ -51,7 +51,7 @@ class Tracker:
     """
     GATING_THRESHOLD = np.sqrt(kalman_filter.chi2inv95[4])
 
-    def __init__(self, metric, max_iou_distance=0.9, max_age=30, n_init=3, _lambda=0):
+    def __init__(self, metric, max_iou_distance=0.9, max_age=30, n_init=3, _lambda=0, global_id_feats=None):
         self.metric = metric
         self.max_iou_distance = max_iou_distance
         self.max_age = max_age
@@ -62,7 +62,9 @@ class Tracker:
         self.tracks = []
         self._next_id = 1
         
-        self.id_feats = {}
+        if global_id_feats is None:
+            global_id_feats = {}
+        self.id_feats = global_id_feats
 
     def predict(self):
         """Propagate track state distributions one time step forward.
