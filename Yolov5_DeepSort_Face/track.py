@@ -129,6 +129,7 @@ def detect(opt):
         dt[2] += time_sync() - t3
 
         # Process detections
+        one_of_the_det_is_none_or_zero = False
         for i, det in enumerate(pred):  # detections per image
             seen += 1
             if webcam:  # batch_size >= 1
@@ -186,25 +187,23 @@ def detect(opt):
                                 f.write(('%g ' * 10 + '\n') % (frame_idx + 1, id, bbox_left,  # MOT format
                                                                bbox_top, bbox_w, bbox_h, -1, -1, -1, -1))
 
-                # Print time (inference-only)
-                LOGGER.info(f'{s}Done. YOLO:({t3 - t2:.3f}s), DeepSort:({t5 - t4:.3f}s)')
             
             else:
-                deepsort.increment_ages()
+                one_of_the_det_is_none_or_zero = True
 
             # Stream results
             im0 = annotator.result()
             if show_vid:
-                cv2.imshow(p, im0)
+                cv2.imshow(str(p), im0)
                 if cv2.waitKey(1) == ord('q'):  # q to quit
                     raise StopIteration
 
             # Save results (image with detections)
             if save_vid:
-                if vid_path != save_path:  # new video
-                    vid_path = save_path
-                    if isinstance(vid_writer, cv2.VideoWriter):
-                        vid_writer.release()  # release previous video writer
+                if vid_path[i] != save_path:  # new video
+                    vid_path[i] = save_path
+                    if isinstance(vid_writer[i], cv2.VideoWriter):
+                        vid_writer[i].release()  # release previous video writer
                     if vid_cap:  # video
                         fps = vid_cap.get(cv2.CAP_PROP_FPS)
                         w = int(vid_cap.get(cv2.CAP_PROP_FRAME_WIDTH))
@@ -212,8 +211,18 @@ def detect(opt):
                     else:  # stream
                         fps, w, h = 30, im0.shape[1], im0.shape[0]
 
-                    vid_writer = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
-                vid_writer.write(im0)
+                    vid_writer[i] = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
+                vid_writer[i].write(im0)
+
+        # increment of ages                
+        if one_of_the_det_is_none_or_zero:
+            deepsort.increment_ages()
+
+        # Print time (inference-only)
+        try:
+            LOGGER.info(f'{s}Done. YOLO:({t3 - t2:.3f}s), DeepSort:({t5 - t4:.3f}s)')
+        except:
+            LOGGER.info(s + ' (no detections)')
 
     # Print results
     t = tuple(x / seen * 1E3 for x in dt)  # speeds per image
