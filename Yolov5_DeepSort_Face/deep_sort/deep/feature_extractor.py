@@ -37,14 +37,20 @@ def get_feats(net, data, flip=True):
     return feats.data.cpu()
 
 @torch.no_grad()
-def get_model(project_config):
+def get_model(project_config, device):
     # parallel setting
-    '''
-    device_ids = os.environ['CUDA_VISIBLE_DEVICES']
-    device_ids = list(range(len(device_ids.split(','))))
-    '''
-    os.environ['CUDA_VISIBLE_DEVICES'] = '0'
-    device_ids = [0]
+    if device == 'cuda':
+        # if multi gpu
+        '''
+        device_ids = os.environ['CUDA_VISIBLE_DEVICES']
+        device_ids = list(range(len(device_ids.split(','))))
+        '''
+        # if single gpu
+        os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+        device_ids = [0] 
+    elif device == 'cpu':  
+        os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
+        device_ids = ['cpu']
 
     config = project_config + '/' + 'config.yml'
     with open(config, 'r') as f:
@@ -56,7 +62,8 @@ def get_model(project_config):
         'model.backbone',
     )
     bkb_net = nn.DataParallel(bkb_net, device_ids=device_ids)
-    bkb_net = bkb_net.cuda()
+    if device == 'cuda':
+        bkb_net = bkb_net.cuda()
     bkb_net.eval()
 
     # model paths and run test
@@ -72,7 +79,10 @@ def get_model(project_config):
     bkb_path = osp.join(model_dir, 'backbone_{}.pth'.format(save_iter))
         
     # load model parameters
-    bkb_net.load_state_dict(torch.load(bkb_path))
+    if device == 'cuda':
+        bkb_net.load_state_dict(torch.load(bkb_path))
+    elif device == 'cpu':
+        bkb_net.load_state_dict(torch.load(bkb_path, map_location=torch.device('cpu') ))
     
     return bkb_net
     
@@ -84,12 +94,12 @@ def get_model(project_config):
 
 
 class Extractor(object):
-    def __init__(self, project_config, use_cuda=True):
+    def __init__(self, project_config, use_cuda=False):
         self.device = "cuda" if torch.cuda.is_available() and use_cuda else "cpu"
         self.input_width = 112
         self.input_height = 112
 
-        self.model = get_model(project_config)
+        self.model = get_model(project_config, device=self.device)
         self.model.to(self.device)
         self.model.eval()
 
