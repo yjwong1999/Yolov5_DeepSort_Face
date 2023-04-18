@@ -57,9 +57,9 @@ wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download
 python3 find_port.py
 ```
 
-- How to use ```source.streams``` for multli-cam or multi-streams
+- How to use ```source.txt``` for multli-cam or multi-streams
 ```
-# In source.streams, each line should be one camera/streams
+# In source.txt, each line should be one camera/streams
 #
 # 1. camera port number (which you get by running python3 find_port.py)
 # 2. https or rtsp link (for online video)
