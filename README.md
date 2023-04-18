@@ -40,7 +40,7 @@ cd ../
 sudo apt-get install zip unzip
 
 cd opensphere/project
-wget --no-check-certificate 'https://drive.google.com/file/d/1mEAkIa9B89QzsamVhNp9mol5PZWxLthM/view?usp=share_link' -O sfnet20_ref.zip
+wget --no-check-certificate 'https://drive.google.com/u/0/uc?id=1mEAkIa9B89QzsamVhNp9mol5PZWxLthM&export=download' -O sfnet20_ref.zip
 unzip sfnet20_ref.zip
 
 cd ../../
