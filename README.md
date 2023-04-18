@@ -30,6 +30,7 @@ cd yolov5
 pip install -r requirements.txt
 pip install tabulate
 pip install easydict
+pip install numpy==1.23.1
 ```
 
 - Back to pipeline directory.
