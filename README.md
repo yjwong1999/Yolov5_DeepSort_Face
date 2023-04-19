@@ -21,7 +21,7 @@ Yolov5 Object Detection with DeepSORT Tracking, using OpenSphere Face Recognitio
 
 **Issue 1** is an existing problem in YOLOv5 repo. </br>
 However, I found that it can be avoided if you don't stop the program by keyboard interrupt (ctrl + c). </br>
-Instead, you:</br>
+Instead, you stop the program by:</br>
 1. Click on any of the windows showing the video frame
 2. Press 'q' (small capital letter)
 
@@ -103,6 +103,15 @@ python3 track.py --source dataset_cam2.mp4 --yolo_model yolo_face.pt --img 640 -
 
 # multi-streams (can mix between live/video/rtsp/https)
 python3 track.py --source source.txt --yolo_model yolo_face.pt --img 640 --deep_sort_model opensphere/project/sfnet20_survface --show-vid --save-vid --save-txt
+```
+
+- Stop Tracking by
+```
+# Refer Issue 1 in TODO
+# DO NOT: stop the program by keyboard interrupt (ctrl + c)
+# DO:     stop the program by:</br>
+# 1. Click on any of the windows showing the video frame
+# 2. Press 'q' (small capital letter)
 ```
 
 ## Acknowledgement
