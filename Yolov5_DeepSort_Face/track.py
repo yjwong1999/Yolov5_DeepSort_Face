@@ -92,7 +92,7 @@ def detect(opt):
     else:
         dataset = LoadImages(source, img_size=imgsz, stride=stride, auto=pt and not jit)
         bs = 1  # batch_size
-    vid_path, vid_writer = [None] * bs, [None] * bs
+    vid_path, vid_writer, txt_path = [None] * bs, [None] * bs, [None] * bs
 
     # initialize deepsort
     deepsort_list = []
@@ -109,10 +109,6 @@ def detect(opt):
                         
     # Get names and colors
     names = model.module.names if hasattr(model, 'module') else model.names
-
-    # extract what is in between the last '/' and last '.'
-    txt_file_name = source.split('/')[-1].split('.')[0]
-    txt_path = str(Path(save_dir)) + '/' + txt_file_name + '.txt'
 
     if pt and device.type != 'cpu':
         model(torch.zeros(1, 3, *imgsz).to(device).type_as(next(model.model.parameters())))  # warmup
@@ -153,6 +149,12 @@ def detect(opt):
                 head, tail = os.path.split(save_path)
                 tail = 'stream_' + tail + '.mp4'
                 save_path = os.path.join(head, tail)
+                
+            txt_file_name = os.path.split(save_path)[1]
+            txt_file_name = txt_file_name[:txt_file_name.rindex('.')] +'.txt'
+            txt_path = str(save_dir / txt_file_name)
+            print(txt_path)
+            
             s += '%gx%g ' % img.shape[2:]  # print string
 
             annotator = Annotator(im0, line_width=2, pil=not ascii)
@@ -196,6 +198,9 @@ def detect(opt):
                             bbox_w = output[2] - output[0]
                             bbox_h = output[3] - output[1]
                             # Write MOT compliant results to file
+                            if not os.path.isfile(txt_path):
+                                with open(txt_path, 'w') as fp:
+                                    pass
                             with open(txt_path, 'a') as f:
                                 f.write(('%g ' * 10 + '\n') % (frame_idx + 1, id, bbox_left,  # MOT format
                                                                bbox_top, bbox_w, bbox_h, -1, -1, -1, -1))
