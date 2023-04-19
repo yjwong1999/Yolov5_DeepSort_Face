@@ -1,22 +1,32 @@
 # Yolov5_DeepSort_Face
 
+**To-be-filled with Conference Proceeding** </br>
+Simulation for Conference Proceedings "doi-to-be-filled" </br>
+Refer [link-to-be-filled](https://github.com/yjwong1999/Yolov5_DeepSort_Face) for the preprint
+
+## Abstract
+To-be-filled
+
+
+## TLDR
 
 ### Features
 Yolov5 Object Detection with DeepSORT Tracking, using OpenSphere Face Recognition Module
 
 
 ### TODO
-- [ ] Issue 1: Fix [video saving issue](https://stackoverflow.com/questions/73324872/cv2-videowriter-issues)
-- [ ] Issue 2: Integrate screenshot face data for model retraining
+- [x] **Issue 1**: Fix [video saving issue](https://stackoverflow.com/questions/73324872/cv2-videowriter-issues)
+- [ ] **Issue 2**: Video stream is jumpy when track on multiple pre-recorded videos
+- [ ] **Issue 3**: Integrate screenshot face data for model retraining
 
-Issue 1 can be avoided if you don't stop the program by keyboard interrupt (ctrl + c). </br>
+**Issue 1** can be avoided if you don't stop the program by keyboard interrupt (ctrl + c). </br>
 Instead, you:</br>
 1. Click on any of the windows showing the video frame
 2. Press 'q' (small capital letter)
 
 
 
-### Steps to run Code
+## Steps to run Code
 
 - Create a conda environment, and activate it
 ```
