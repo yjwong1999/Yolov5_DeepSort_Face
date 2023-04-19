@@ -92,7 +92,13 @@ Many thanks to our funder Greatech Integration (M) Sdn Bhd for sponsoring this p
 3. [OpenSphere Face Recognition](https://github.com/ydwen/opensphere) </br>
 4. [Yolov5](https://github.com/ultralytics/yolov5) </br>
 5. [How to list available cameras OpenCV/Python](https://stackoverflow.com/a/62639343)
+6. [How to wget files from Google Drive](https://bcrf.biochem.wisc.edu/2021/02/05/download-google-drive-files-using-wget/)
 
 - Technically, I used Reference [1] for detection & tracking, where Reference [2] is forked from a past version of Reference [2] </br>
 - Reference [1] and [2] assign ID based on tracks (which means each tracking has an ID, disregarding the object identity itself) </br>
 - Thus, [3] is used to learn the face identity, which is assigned as the ID for the tracking ID
+
+## TODO
+- [ ] Issue 1: Fix [video saving issue](https://stackoverflow.com/questions/73324872/cv2-videowriter-issues)
+- [ ] Issue 2: Integrate screenshot face data for model retraining
+
