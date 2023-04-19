@@ -5,6 +5,11 @@
 Yolov5 Object Detection with DeepSORT Tracking, using OpenSphere Face Recognition Module
 
 
+### TODO
+- [ ] Issue 1: Fix [video saving issue](https://stackoverflow.com/questions/73324872/cv2-videowriter-issues)
+- [ ] Issue 2: Integrate screenshot face data for model retraining
+
+
 ### Steps to run Code
 
 - Create a conda environment, and activate it
@@ -74,13 +79,13 @@ python3 find_port.py
 - Do Tracking with mentioned command below
 ```
 # single video cam
-python3 track.py --source 0 --yolo_model yolo_face.pt --img 640 --deep_sort_model opensphere/project/sfnet20_survface --show-vid --save-vid 
+python3 track.py --source 0 --yolo_model yolo_face.pt --img 640 --deep_sort_model opensphere/project/sfnet20_survface --show-vid --save-vid --save-txt
 
 # video file
-python3 track.py --source dataset_cam2.mp4 --yolo_model yolo_face.pt --img 640 --deep_sort_model opensphere/project/sfnet20_survface --show-vid --save-vid
+python3 track.py --source dataset_cam2.mp4 --yolo_model yolo_face.pt --img 640 --deep_sort_model opensphere/project/sfnet20_survface --show-vid --save-vid --save-txt
 
 # multi-streams (can mix between live/video/rtsp/https)
-python3 track.py --source source.txt --yolo_model yolo_face.pt --img 640 --deep_sort_model opensphere/project/sfnet20_survface --show-vid --save-vid
+python3 track.py --source source.txt --yolo_model yolo_face.pt --img 640 --deep_sort_model opensphere/project/sfnet20_survface --show-vid --save-vid --save-txt
 ```
 
 ## Acknowledgement
@@ -97,8 +102,3 @@ Many thanks to our funder Greatech Integration (M) Sdn Bhd for sponsoring this p
 - Technically, I used Reference [1] for detection & tracking, where Reference [2] is forked from a past version of Reference [2] </br>
 - Reference [1] and [2] assign ID based on tracks (which means each tracking has an ID, disregarding the object identity itself) </br>
 - Thus, [3] is used to learn the face identity, which is assigned as the ID for the tracking ID
-
-## TODO
-- [ ] Issue 1: Fix [video saving issue](https://stackoverflow.com/questions/73324872/cv2-videowriter-issues)
-- [ ] Issue 2: Integrate screenshot face data for model retraining
-
