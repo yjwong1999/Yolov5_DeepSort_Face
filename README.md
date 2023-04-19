@@ -9,6 +9,12 @@ Yolov5 Object Detection with DeepSORT Tracking, using OpenSphere Face Recognitio
 - [ ] Issue 1: Fix [video saving issue](https://stackoverflow.com/questions/73324872/cv2-videowriter-issues)
 - [ ] Issue 2: Integrate screenshot face data for model retraining
 
+Issue 1 can be avoided if you don't stop the program by keyboard interrupt (ctrl + c). </br>
+Instead, you:</br>
+1. Click on any of the windows showing the video frame
+2. Press 'q' (small capital letter)
+
+
 
 ### Steps to run Code
 
