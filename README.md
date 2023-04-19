@@ -16,8 +16,8 @@ Yolov5 Object Detection with DeepSORT Tracking, using OpenSphere Face Recognitio
 
 ### TODO
 - [ ] **Issue 1**     : Update requirements.txt
-- [x] **Issue 1**     : Fix [video saving issue](https://stackoverflow.com/questions/73324872/cv2-videowriter-issues)
-- [ ] **Issue 2**     : Video stream is jumpy when track on multiple pre-recorded videos
+- [x] **Issue 2**     : Fix [video saving issue](https://stackoverflow.com/questions/73324872/cv2-videowriter-issues)
+- [ ] **Issue 3**     : Video stream is jumpy when track on multiple pre-recorded videos
 - [ ] **Feature 1**   : Integrate screenshot face data for model retraining
 
 **Issue 1** is an existing problem in YOLOv5 repo. </br>
