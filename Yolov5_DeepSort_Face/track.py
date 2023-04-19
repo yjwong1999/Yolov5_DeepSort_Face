@@ -148,6 +148,11 @@ def detect(opt):
 
             p = Path(p)  # to Path
             save_path = str(save_dir / p.name)  # im.jpg, vid.mp4, ...
+            # new, bug fix for yolov5 repo: if camera, p.name no extension
+            if webcam and os.path.splitext(save_path)[1] == '':
+                head, tail = os.path.split(save_path)
+                tail = 'stream_' + tail + '.mp4'
+                save_path = os.path.join(head, tail)
             s += '%gx%g ' % img.shape[2:]  # print string
 
             annotator = Annotator(im0, line_width=2, pil=not ascii)
