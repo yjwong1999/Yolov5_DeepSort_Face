@@ -108,6 +108,7 @@ python3 track.py --source source.txt --yolo_model yolo_face.pt --img 640 --deep_
 - Stop Tracking by
 ```
 # Refer Issue 1 in TODO
+# 
 # DO NOT: stop the program by keyboard interrupt (ctrl + c)
 # DO:     stop the program by:</br>
 # 1. Click on any of the windows showing the video frame
