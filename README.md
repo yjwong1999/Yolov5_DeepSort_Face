@@ -15,7 +15,7 @@ Yolov5 Object Detection with DeepSORT Tracking, using OpenSphere Face Recognitio
 
 
 ### TODO
-- [ ] **Issue 1**     : Update requirements.txt
+- [x] **Issue 1**     : Update requirements.txt
 - [x] **Issue 2**     : Fix [video saving issue](https://stackoverflow.com/questions/73324872/cv2-videowriter-issues)
 - [ ] **Issue 3**     : Video stream is jumpy when track on multiple pre-recorded videos
 - [ ] **Issue 4**     : The inference time for multi-source is wrong
@@ -46,17 +46,11 @@ git clone https://github.com/yjwong1999/Yolov5_DeepSort_Face.git
 - Goto cloned folder
 ```
 cd Yolov5_DeepSort_Face/Yolov5_DeepSort_Face
-cd yolov5
 ```
 
-- Install the yolov5 package
+- Install the dependencies
 ```
 pip install -r requirements.txt
-pip install tabulate
-pip install easydict
-pip install numpy==1.23.1
-
-cd ../
 ```
 
 - Download pretrained OpenSphere Model
