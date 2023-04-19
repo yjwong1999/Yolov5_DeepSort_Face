@@ -216,8 +216,7 @@ def detect(opt):
                 if vid_path[i] != save_path:  # new video
                     vid_path[i] = save_path
                     if isinstance(vid_writer[i], cv2.VideoWriter):
-                        #vid_writer[i].release()  # move to bottom
-                        pass
+                        vid_writer[i].release()  # release previous video writer
                     if vid_cap:  # video
                         fps = vid_cap.get(cv2.CAP_PROP_FPS)
                         w = int(vid_cap.get(cv2.CAP_PROP_FRAME_WIDTH))
@@ -227,7 +226,6 @@ def detect(opt):
 
                     vid_writer[i] = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
                 vid_writer[i].write(im0)
-                vid_writer[i].release()
 
         # Print time (inference-only)
         try:
