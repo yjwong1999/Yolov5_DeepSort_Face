@@ -129,6 +129,8 @@ conda deactivate # if you are in other conda environment
 conda env create -f environment.yml
 conda activate opensphere
 
+# assuming you are in Yolov5_DeepSort_Face/Yolov5_DeepSort_Face
+cd opensphere
 bash scripts/dataset_setup_valiadation_only.sh    # if you only want to train with your custom dataset
 OR
 bash scripts/dataset_setup.sh                     # if you want to train with VGG Face 2 dataet
