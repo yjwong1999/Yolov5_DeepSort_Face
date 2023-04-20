@@ -121,6 +121,14 @@ runs/track/<exp index>
 python3 extract_face.py --source runs/track/<exp index>
 ```
 
+## Retrain OpenSphere Model
+- Get QMUL-SurvFace dataset
+```
+cd opensphere/customize
+wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=13ch6BPaexlKt8gXB_I8aX7p1G3yPm2Bl' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=13ch6BPaexlKt8gXB_I8aX7p1G3yPm2Bl" -O QMUL-SurvFace.zip && rm -rf /tmp/cookies.txt
+unzip QMUL-SurvFace.zip
+```
+
 ## Acknowledgement
 This work was supported by the Greatech Integration (M) Sdn Bhd with project number 8084-0008.
 
