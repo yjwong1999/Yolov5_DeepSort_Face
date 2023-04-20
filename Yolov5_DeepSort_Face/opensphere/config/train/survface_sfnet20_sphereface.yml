@@ -28,7 +28,7 @@ data:
       type: ClassDataset
       name: VGGFace2
       data_dir: /home/tham/Desktop/KH/opensphere/customize/QMUL-SurvFace
-      ann_path: /home/tham/Desktop/KH/opensphere/customize/QMUL-SurvFace/SurvFace_train_ann.txt
+      ann_path: /home/tham/Desktop/KH/opensphere/customize/QMUL-SurvFace/QMUL-SurvFace_train_ann.txt
       test_mode: false
     dataloader: {batch_size: 512, shuffle: true, drop_last: true}
   val:
