@@ -136,7 +136,7 @@ cd ../
 - Create a new conda environment to train OpenSphere
 ```
 conda deactivate # if you are in other conda environment
-conda create --name opensphere python=3.8.10
+conda env create -f environment.yml
 conda activate opensphere
 ```
 
