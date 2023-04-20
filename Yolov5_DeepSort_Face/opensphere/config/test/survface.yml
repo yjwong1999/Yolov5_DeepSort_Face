@@ -8,7 +8,7 @@ data:
       type: PairDataset
       name: Combined
       data_dir: /home/tham/Desktop/KH/opensphere/customize
-      ann_path: /home/tham/Desktop/KH/opensphere/customize/QMUL-SurvFace/SurvFace_test_ann.txt
+      ann_path: /home/tham/Desktop/KH/opensphere/customize/QMUL-SurvFace/QMUL-SurvFace_test_ann.txt
       test_mode: true
       metrics:
       - ACC
