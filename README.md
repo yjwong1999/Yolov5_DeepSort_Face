@@ -129,6 +129,13 @@ wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download
 unzip QMUL-SurvFace.zip
 ```
 
+- Create a new conda environment to train OpenSphere
+```
+conda deactivate # if you are in other conda environment
+conda create --name opensphere python=3.8.10
+conda activate opensphere
+```
+
 ## Acknowledgement
 This work was supported by the Greatech Integration (M) Sdn Bhd with project number 8084-0008.
 
