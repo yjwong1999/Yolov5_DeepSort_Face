@@ -128,6 +128,12 @@ python3 extract_face.py --source runs/track/<exp index>
 conda deactivate # if you are in other conda environment
 conda env create -f environment.yml
 conda activate opensphere
+
+bash scripts/dataset_setup_valiadation_only.sh    # if you only want to train with your custom dataset
+OR
+bash scripts/dataset_setup.sh                     # if you want to train with VGG Face 2 dataet
+OR
+bash scripts/dataset_setup_ms1m.sh                # if you want to train with ms1m dataset
 ```
 
 - Get QMUL-SurvFace dataset
