@@ -26,7 +26,7 @@ data:
   train:
     dataset:
       type: ClassDataset
-      name: VGGFace2
+      name: QMUL-SurvFace
       data_dir: customize/QMUL-SurvFace
       ann_path: customize/QMUL-SurvFace/QMUL-SurvFace_train_ann.txt
       test_mode: false
