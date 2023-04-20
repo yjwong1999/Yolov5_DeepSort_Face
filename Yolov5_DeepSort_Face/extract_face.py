@@ -136,6 +136,11 @@ for video_filename in video_mot_pair:
             cropped.save(os.path.join(new_data_dir, str(track_count), f'{i}.jpg'))
         track_count += 1
 
+    print()
+    print('Face extraction DONE to:')
+    print(f'{new_data_dir}')
+
+
 cap.release()
 cv2.destroyAllWindows()
 
