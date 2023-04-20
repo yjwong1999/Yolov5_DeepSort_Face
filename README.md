@@ -122,6 +122,14 @@ python3 extract_face.py --source runs/track/<exp index>
 ```
 
 ## Retrain OpenSphere Model
+
+- Create a new conda environment to train OpenSphere
+```
+conda deactivate # if you are in other conda environment
+conda env create -f environment.yml
+conda activate opensphere
+```
+
 - Get QMUL-SurvFace dataset
 ```
 cd opensphere/customize
@@ -131,13 +139,6 @@ unzip QMUL-SurvFace.zip
 python3 generate_annot.py --directory QMUL-SurvFace # generate annotation for this dataset
 
 cd ../
-```
-
-- Create a new conda environment to train OpenSphere
-```
-conda deactivate # if you are in other conda environment
-conda env create -f environment.yml
-conda activate opensphere
 ```
 
 ## Acknowledgement
