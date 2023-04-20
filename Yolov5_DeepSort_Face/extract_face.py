@@ -130,11 +130,11 @@ for video_filename in video_mot_pair:
         if cv2.waitKey(25) & 0xFF == ord('q'):
             break
 
-for reference_id in last_seen_of_this_id.keys():
-    os.mkdir(os.path.join(new_data_dir, str(track_count)))
-    for i, cropped in enumerate(id_and_cropped[reference_id]):
-        cropped.save(os.path.join(new_data_dir, str(track_count), f'{i}.jpg'))
-    track_count += 1
+    for reference_id in last_seen_of_this_id.keys():
+        os.mkdir(os.path.join(new_data_dir, str(track_count)))
+        for i, cropped in enumerate(id_and_cropped[reference_id]):
+            cropped.save(os.path.join(new_data_dir, str(track_count), f'{i}.jpg'))
+        track_count += 1
 
 cap.release()
 cv2.destroyAllWindows()
