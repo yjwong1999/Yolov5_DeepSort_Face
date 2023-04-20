@@ -140,7 +140,7 @@ bash scripts/dataset_setup_ms1m.sh                # if you want to train with ms
 
 - Get QMUL-SurvFace dataset
 ```
-cd opensphere/customize
+cd customize
 wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=13ch6BPaexlKt8gXB_I8aX7p1G3yPm2Bl' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=13ch6BPaexlKt8gXB_I8aX7p1G3yPm2Bl" -O QMUL-SurvFace.zip && rm -rf /tmp/cookies.txt
 unzip QMUL-SurvFace.zip
 
