@@ -29,7 +29,7 @@ for filename in os.listdir(file_dir):
 
 
 # create a directory to store cropped face
-new_data_parent_dir = 'new_face_data'
+new_data_parent_dir = 'opensphere/customize/new_face_data'
 if not os.path.isdir(new_data_parent_dir):
     os.mkdir(new_data_parent_dir)
 
@@ -52,7 +52,12 @@ for video_filename in video_mot_pair:
     new_data_dir = os.path.split(video_filename)[1]
     new_data_dir = new_data_dir[:new_data_dir.rindex('.')]
     new_data_dir = os.path.join(new_data_parent_dir, new_data_dir)
-    os.mkdir(new_data_dir)
+    try:
+        os.mkdir(new_data_dir)
+    except:
+        print(f'You had already create extract faces from this directory: {new_data_dir}!')
+        print('Delete the previously extracted faces if you wish to re-extract!')
+        raise StopIteration
 
     # loop the videos
     cap = cv2.VideoCapture(video_filename)
@@ -78,19 +83,23 @@ for video_filename in video_mot_pair:
                     last_seen_of_this_id[id] = 0
                     id_and_cropped[id] = []
 
-                # see if any tracking is ended
-                print(last_seen_of_this_id)
+                # see if any tracking should be ended
+                #print(last_seen_of_this_id)
                 reference_id_to_be_deleted = []
                 for reference_id in last_seen_of_this_id.keys():
                     if reference_id != id:
                         last_seen_of_this_id[reference_id] += 1
-                        print(last_seen_of_this_id[reference_id])
+                        #print(last_seen_of_this_id[reference_id])
                         if last_seen_of_this_id[reference_id] >= 10:
                             os.mkdir(os.path.join(new_data_dir, str(track_count)))
                             for i, cropped in enumerate(id_and_cropped[reference_id]):
                                 cropped.save(os.path.join(new_data_dir, str(track_count), f'{i}.jpg'))
                             track_count += 1
                             reference_id_to_be_deleted.append(reference_id)
+                    else:
+                        last_seen_of_this_id[reference_id] = 0
+
+                # delete and and this tracking
                 for reference_id in reference_id_to_be_deleted:
                     del id_and_cropped[reference_id]
                     del last_seen_of_this_id[reference_id]
