@@ -106,7 +106,7 @@ python3 track.py --source source.txt --yolo_model yolo_face.pt --img 640 --deep_
 # Refer Issue 1 in TODO
 # 
 # DO NOT: stop the program by keyboard interrupt (ctrl + c)
-# DO:     stop the program by:</br>
+# DO:     stop the program by:
 # 1. Click on any of the windows showing the video frame
 # 2. Press 'q' (small capital letter)
 ```
