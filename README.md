@@ -127,6 +127,10 @@ python3 extract_face.py --source runs/track/<exp index>
 cd opensphere/customize
 wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=13ch6BPaexlKt8gXB_I8aX7p1G3yPm2Bl' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=13ch6BPaexlKt8gXB_I8aX7p1G3yPm2Bl" -O QMUL-SurvFace.zip && rm -rf /tmp/cookies.txt
 unzip QMUL-SurvFace.zip
+
+python3 generate_annot.py --directory QMUL-SurvFace # generate annotation for this dataset
+
+cd ../
 ```
 
 - Create a new conda environment to train OpenSphere
