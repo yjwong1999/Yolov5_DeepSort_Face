@@ -111,6 +111,16 @@ python3 track.py --source source.txt --yolo_model yolo_face.pt --img 640 --deep_
 # 2. Press 'q' (small capital letter)
 ```
 
+- Each ```python3 track.py``` will create an ```<exp index>```. You can view recordings in:
+```
+runs/track/<exp index>
+```
+
+- You can extract faces from recording (for retraining) by:
+```
+python3 extract_face.py --source runs/track/<exp index>
+```
+
 ## Acknowledgement
 This work was supported by the Greatech Integration (M) Sdn Bhd with project number 8084-0008.
 
