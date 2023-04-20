@@ -112,7 +112,7 @@ python3 track.py --source source.txt --yolo_model yolo_face.pt --img 640 --deep_
 ```
 
 ## Acknowledgement
-Many thanks to our funder Greatech Integration (M) Sdn Bhd for sponsoring this project
+This work was supported by the Greatech Integration (M) Sdn Bhd with project number 8084-0008.
 
 ### Reference Code
 1. [Yolov5 + DeepSort for Object Detection and Tracking](https://github.com/nicedaddy/Yolov5_DeepSort_Pytorch) </br>
