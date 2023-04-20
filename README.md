@@ -21,7 +21,7 @@ Yolov5 Object Detection with DeepSORT Tracking, using OpenSphere Face Recognitio
 - [ ] **Issue 4**     : The inference time for multi-source is wrong
 - [ ] **Feature 1**   : Integrate screenshot face data for model retraining
 
-**Issue 1** is an existing problem in YOLOv5 repo. </br>
+**Issue 2** is an existing problem in YOLOv5 repo. </br>
 However, I found that it can be avoided if you don't stop the program by keyboard interrupt (ctrl + c). </br>
 Instead, you stop the program by:</br>
 1. Click on any of the windows showing the video frame
