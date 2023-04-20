@@ -5,7 +5,13 @@ import warnings
 import torch
 import torch.nn as nn
 
-from opensphere.utils import is_dist, get_world_size, get_rank ##### edited for pipeline
+in_opensphere_repo = False
+try:
+    from opensphere.utils import is_dist, get_world_size, get_rank ##### edited for pipeline
+except:
+    in_opensphere_repo = True
+    from utils import is_dist, get_world_size, get_rank
+
 from importlib import import_module
 
 
@@ -29,7 +35,8 @@ def build_from_cfg(cfg, module):
     if not isinstance(obj_type, str):
         raise TypeError(f'type must be a str, but got {type(obj_type)}')
     else:
-        module = 'opensphere' + '.' + module ##### edited for pipeline
+        if not in_opensphere_repo:
+            module = 'opensphere' + '.' + module ##### edited for pipeline
         obj_cls = getattr(import_module(module), obj_type)
         if obj_cls is None:
             raise KeyError(f'{obj_type} is not in the {module} module')
