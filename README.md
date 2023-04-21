@@ -149,6 +149,16 @@ python3 generate_annot.py --directory QMUL-SurvFace # generate annotation for th
 cd ../
 ```
 
+- Train OpenSphere Model using QMUL-SurvFace dataset
+```
+CUDA_VISIBLE_DEVICES=0 python train.py --config config/train/survface_sfnet20_sphereface.yml
+```
+
+- Test OpenSphere Model using QMUL-SurvFace dataset
+```
+CUDA_VISIBLE_DEVICES=0 python test.py --config config/test/survface.yml --proj_dir project/<filename>
+```
+
 ## Acknowledgement
 This work was supported by the Greatech Integration (M) Sdn Bhd with project number 8084-0008.
 
