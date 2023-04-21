@@ -151,7 +151,24 @@ cd ../
 
 - Train OpenSphere Model using QMUL-SurvFace dataset
 ```
+# Train SFNet20 using SphereFace loss function
 CUDA_VISIBLE_DEVICES=0 python train.py --config config/train/survface_sfnet20_sphereface.yml
+# Train SFNet20 using SphereFaceR loss function
+CUDA_VISIBLE_DEVICES=0 python train.py --config config/train/survface_sfnet20_spherefacer.yml
+# Train SFNet20 using SphereFace2 loss function
+CUDA_VISIBLE_DEVICES=0 python train.py --config config/train/survface_sfnet20_sphereface2.yml
+
+# Train SFNet64 using SphereFace loss function
+CUDA_VISIBLE_DEVICES=0 python train.py --config config/train/survface_sfnet64_sphereface.yml
+# Train SFNet64 using SphereFaceR loss function
+CUDA_VISIBLE_DEVICES=0 python train.py --config config/train/survface_sfnet64_spherefacer.yml
+# Train SFNet64 using SphereFace2 loss function
+CUDA_VISIBLE_DEVICES=0 python train.py --config config/train/survface_sfnet64_sphereface2.yml
+
+# NOTE THAT:
+# CUDA_VISIBLE_DEVICES=0 means use 1st CUDA device to train
+# CUDA_VISIBLE_DEVICES=0,1 means use 1st and 2nd CUDA devices to train
+# and so on...
 ```
 
 - Test OpenSphere Model using QMUL-SurvFace dataset
