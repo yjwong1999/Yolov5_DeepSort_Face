@@ -93,7 +93,7 @@ for video_filename in video_mot_pair:
                         if last_seen_of_this_id[reference_id] >= 10:
                             os.mkdir(os.path.join(new_data_dir, str(track_count)))
                             for i, cropped in enumerate(id_and_cropped[reference_id]):
-                                cropped.save(os.path.join(new_data_dir, str(track_count), f'{i}.jpg'))
+                                cropped.save(os.path.join(new_data_dir, str(track_count), f'{str(track_count)}_{i}.jpg'))
                             track_count += 1
                             reference_id_to_be_deleted.append(reference_id)
                     else:
