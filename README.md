@@ -1,6 +1,6 @@
-# Yolov5_DeepSort_Face
+# Multi-Camera Face Detection and Recognition in Unconstrained Environment
 
-**To-be-filled with Conference Proceeding** </br>
+**IEEE World AI IoT Congress 2023** </br>
 Simulation for Conference Proceedings "doi-to-be-filled" </br>
 Refer [link-to-be-filled](https://github.com/yjwong1999/Yolov5_DeepSort_Face) for the preprint
 
