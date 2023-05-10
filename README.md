@@ -5,7 +5,7 @@ Simulation for Conference Proceedings "doi-to-be-filled" </br>
 Refer [link-to-be-filled](https://github.com/yjwong1999/Yolov5_DeepSort_Face) for the preprint
 
 ## Abstract
-To-be-filled
+Multi-camera face detection and recognition is an Artificial Intelligence (AI) based technology that leverages multiple cameras placed at different locations to detect and recognize human faces in real-world conditions accurately. While face detection and recognition technologies have exhibited high accuracy rates in controlled conditions, recognizing individuals in open environments remains challenging due to factors such as changes in illumination, movement, and occlusions. In this paper, we propose a multi-camera face detection and recognition (MCFDR) pipeline, which consists of three main parts - face detection, face recognition, and tracking. A series of model training is done with the open-source dataset to build a robust pipeline, and finally, the pipeline adopted trained YOLOv5n for face detection model with mAP 0.495, precision value of 0.868, and recall value of 0.781. The system also adopted the SphereFace SFNet20 model with an accuracy of 82.05% and a higher inference rate than SFNet64 for face recognition. These models are then fed into DeepSORT for multi-camera tracking. Our dataset has been applied to the pipeline and shows ideal outcomes with objectives achieved.
 
 
 ## TLDR
