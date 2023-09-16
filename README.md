@@ -174,7 +174,12 @@ CUDA_VISIBLE_DEVICES=0 python train.py --config config/train/survface_sfnet64_sp
 
 - Test OpenSphere Model using QMUL-SurvFace dataset
 ```
-CUDA_VISIBLE_DEVICES=0 python test.py --config config/test/survface.yml --proj_dir project/<filename>
+CUDA_VISIBLE_DEVICES=0 python test.py --config config/test/survface.yml --proj_dir project/<dir name>
+```
+
+- Convert OpenSphere Model to OpenVINO (for future usage)
+```
+CUDA_VISIBLE_DEVICES=0 python onnx_exporter.py --config config/test/survface.yml --proj_dir project/<dir name>
 ```
 
 ## Acknowledgement
