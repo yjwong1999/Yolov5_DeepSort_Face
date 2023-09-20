@@ -196,3 +196,17 @@ This work was supported by the Greatech Integration (M) Sdn Bhd with project num
 - Technically, I used Reference [1] for detection & tracking, where Reference [2] is forked from a past version of Reference [2] </br>
 - Reference [1] and [2] assign ID based on tracks (which means each tracking has an ID, disregarding the object identity itself) </br>
 - Thus, [3] is used to learn the face identity, which is assigned as the ID for the tracking ID
+
+## Cite this repository
+
+```
+@INPROCEEDINGS{10174362,
+  author={Wong, Yi Jie and Huang Lee, Kian and Tham, Mau-Luen and Kwan, Ban-Hoe},
+  booktitle={2023 IEEE World AI IoT Congress (AIIoT)}, 
+  title={Multi-Camera Face Detection and Recognition in Unconstrained Environment}, 
+  year={2023},
+  volume={},
+  number={},
+  pages={0548-0553},
+  doi={10.1109/AIIoT58121.2023.10174362}}
+```
