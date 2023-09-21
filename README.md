@@ -3,7 +3,10 @@
 **IEEE World AI IoT Congress 2023** </br>
 Simulation for Conference Proceedings [https://doi.org/10.1109/AIIoT58121.2023.10174362](https://doi.org/10.1109/AIIoT58121.2023.10174362) </br>
 Refer [here](https://www.researchgate.net/publication/371315031_Multi-Camera_Face_Detection_and_Recognition_in_Unconstrained_Environment) for the preprint </br>
-(The repo will not be further maintained. Please refer to [other repo]([https://github.com/yjwong1999/Yolov5_DeepSort_Face](https://github.com/stars/yjwong1999/lists/mcfdr)) here)
+
+Warning!</br>
+The repo will not be further maintained! 
+Please refer to [latest repo](https://github.com/yjwong1999/OpenVINO-Face-Tracking-using-YOLOv8-and-DeepSORT) here.
 
 ## Abstract
 Multi-camera face detection and recognition is an Artificial Intelligence (AI) based technology that leverages multiple cameras placed at different locations to detect and recognize human faces in real-world conditions accurately. While face detection and recognition technologies have exhibited high accuracy rates in controlled conditions, recognizing individuals in open environments remains challenging due to factors such as changes in illumination, movement, and occlusions. In this paper, we propose a multi-camera face detection and recognition (MCFDR) pipeline, which consists of three main parts - face detection, face recognition, and tracking. A series of model training is done with the open-source dataset to build a robust pipeline, and finally, the pipeline adopted trained YOLOv5n for face detection model with mAP 0.495, precision value of 0.868, and recall value of 0.781. The system also adopted the SphereFace SFNet20 model with an accuracy of 82.05% and a higher inference rate than SFNet64 for face recognition. These models are then fed into DeepSORT for multi-camera tracking. Our dataset has been applied to the pipeline and shows ideal outcomes with objectives achieved.
